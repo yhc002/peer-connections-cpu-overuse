@@ -54,7 +54,7 @@ function PeerConnection(id, cpuOveruseDetection) {
   this.start = function() {
     var onGetUserMediaSuccess = this.onGetUserMediaSuccess.bind(this);
     navigator.mediaDevices.getUserMedia({
-      audio: true,
+      audio: false,
       video: true
     })
       .then(onGetUserMediaSuccess)
@@ -89,7 +89,7 @@ function PeerConnection(id, cpuOveruseDetection) {
     // Initiate call.
     var onCreateOfferSuccess = this.onCreateOfferSuccess.bind(this);
     this.localConnection.createOffer({
-      offerToReceiveAudio: 1,
+      offerToReceiveAudio: 0,
       offerToReceiveVideo: 1
     })
       .then(onCreateOfferSuccess, logError);
